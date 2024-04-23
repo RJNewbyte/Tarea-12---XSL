@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html>
+  <h1>Campus Digital</h1>
+  <p>Página web: <a href="https://campusdigitalfp.com/">https://campusdigitalfp.com/</a></p>
+  <table border="1">
+    <tr>
+      <th>Nombre del ciclo</th>
+      <th>Grado</th>
+      <th>Año del título</th>
+    </tr>
+    <tr>
+      <td>Administración de Sistemas Informáticos en Red</td>
+      <td>Superior</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <td>Desarrollo de Aplicaciones Multiplataforma</td>
+      <td>Superior</td>
+      <td>2010</td>
+    </tr>
+    <tr>
+      <td>Sistemas Microinformáticos y Redes</td>
+      <td>Medio</td>
+      <td>2008</td>
+    </tr>
+  </table>
+</html>

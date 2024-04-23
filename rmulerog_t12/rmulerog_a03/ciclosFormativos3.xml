@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ies nombre="Campus Digital" web="https://campusdigitalfp.com/">
+<ies>
+  <nombre>Campus Digital</nombre>
+  <web>http://www.iesabastos.org</web>
   <ciclos>
     <ciclo id="ASIR">
       <nombre>Administración de Sistemas Informáticos en Red</nombre>
