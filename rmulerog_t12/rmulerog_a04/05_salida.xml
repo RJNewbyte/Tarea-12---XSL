@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<paises>
+  <pais nombre="España">
+    <museo museo="Museo del Prado" ciudad="Madrid" />
+  </pais>
+  <pais nombre="Reino Unido">
+    <museo museo="British Museum" ciudad="Londres" />
+  </pais>
+  <pais nombre="Reino Unido">
+    <museo museo="Victoria and Albert Museum" ciudad="Londres" />
+  </pais>
+</paises>

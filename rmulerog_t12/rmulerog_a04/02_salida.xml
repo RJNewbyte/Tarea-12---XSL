@@ -2,17 +2,14 @@
 <museos>
   <museo>
     <nombre>Museo del Prado</nombre>
-    <ciudad>Madrid</ciudad>
-    <pais>España</pais>
+    <ubicacion ciudad="Madrid" pais="España" />
   </museo>
   <museo>
     <nombre>British Museum</nombre>
-    <ciudad>Londres</ciudad>
-    <pais>Reino Unido</pais>
+    <ubicacion ciudad="Londres" pais="Reino Unido" />
   </museo>
   <museo>
     <nombre>Victoria and Albert Museum</nombre>
-    <ciudad>Londres</ciudad>
-    <pais>Reino Unido</pais>
+    <ubicacion ciudad="Londres" pais="Reino Unido" />
   </museo>
 </museos>
