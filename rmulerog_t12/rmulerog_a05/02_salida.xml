@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<museos>
+  <museo ubicacion="Madrid (España)">Museo del Prado</museo>
+  <museo ubicacion="Londres (Reino Unido)">British Museum</museo>
+  <museo ubicacion="Londres (Reino Unido)">Victoria and Albert Museum</museo>
+</museos>
