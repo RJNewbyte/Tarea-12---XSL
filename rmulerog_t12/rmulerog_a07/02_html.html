@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tarea: Introducción a XPath</title>
+</head>
+<body>
+<h1 id="tarea:introducciónaxpath">Tarea: Introducción a XPath</h1>
+
+<ul>
+<li>Módulo profesional: Lenguajes de Marcas y Sistemas de Gestión de Información</li>
+<li>Ciclo formativo: Desarrollo de Aplicaciones Web</li>
+<li>Autor: Rodrigo Mulero García</li>
+<li>Fecha: 29/03/2024</li>
+</ul>
+
+<h2 id="actividad1">Actividad 1</h2>
+
+<details>
+<summary>EXPANDIR ACTIVIDAD</summary>
+
+<p>Dado el siguiente documento XML, escriba las expresiones XPath que devuelvan la respuesta deseada.</p>
+
+<details>
+<summary>Documento XML</summary>
+
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ies&gt;
+  &lt;nombre&gt;Campus Digital&lt;/nombre&gt;
+  &lt;web&gt;https://campusdigitalfp.com/&lt;/web&gt;
+  &lt;ciclos&gt;
+    &lt;ciclo id=&quot;ASIR&quot;&gt;
+      &lt;nombre&gt;Administración de Sistemas Informáticos en Red&lt;/nombre&gt;
+      &lt;grado&gt;Superior&lt;/grado&gt;
+      &lt;decretoTitulo año=&quot;2009&quot; /&gt;
+    &lt;/ciclo&gt;
+    &lt;ciclo id=&quot;DAM&quot;&gt;
+      &lt;nombre&gt;Desarrollo de Aplicaciones Multiplataforma&lt;/nombre&gt;
+      &lt;grado&gt;Superior&lt;/grado&gt;
+      &lt;decretoTitulo año=&quot;2010&quot; /&gt;
+    &lt;/ciclo&gt;
+    &lt;ciclo id=&quot;SMR&quot;&gt;
+      &lt;nombre&gt;Sistemas Microinformáticos y Redes&lt;/nombre&gt;
+      &lt;grado&gt;Medio&lt;/grado&gt;
+      &lt;decretoTitulo año=&quot;2008&quot; /&gt;
+    &lt;/ciclo&gt;
+  &lt;/ciclos&gt;
+&lt;/ies&gt;
+</code></pre>
+
+</details>
+
+<h3 id="actividad1.1">Actividad 1.1</h3>
+
+<p>Nombre del instituto.</p>
+
+<details>
+Salida esperada:
+
+<pre><code class="xml">&lt;nombre&gt;Campus Digital&lt;/nombre&gt;
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">/ies/nombre
+</code></pre>
+
+<p>Salida real:</p>
+
+<pre><code class="xml">&lt;nombre&gt;Campus Digital&lt;/nombre&gt;
+</code></pre>
+
+</details>
+
+<h3 id="actividad1.2">Actividad 1.2</h3>
+
+<p>Página web del Instituto.</p>
+
+<details>
+Salida esperada:
+
+<pre><code class="plaintext">https://campusdigitalfp.com/
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//web/text()
+</code></pre>
+
+<p>Salida real:</p>
+
+<pre><code class="xml">https://campusdigitalfp.com/
+</code></pre>
+
+</details>
+
+<h3 id="actividad1.3">Actividad 1.3</h3>
+
+<p>Nombre de los Ciclos Formativos.</p>
+
+<details>
+Salida esperada:
+
+<pre><code class="plaintext">Administración de Sistemas Informáticos en Red
+Desarrollo de Aplicaciones Multiplataforma
+Sistemas Microinformáticos y Redes
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//ciclos/ciclo/nombre/text()
+</code></pre>
+
+<p>Salida real:</p>
+
+<pre><code class="xml">Administración de Sistemas Informáticos en Red
+Desarrollo de Aplicaciones Multiplataforma
+Sistemas Microinformáticos y Redes
+</code></pre>
+
+</details>
+
+<h3 id="actividad1.4">Actividad 1.4</h3>
+
+<p>Siglas por las que se conocen los Ciclos Formativos.</p>
+
+<details>
+Salida esperada:
+
+<pre><code class="xpath">id=&quot;ASIR&quot;
+id=&quot;DAM&quot;
+id=&quot;SMR&quot;
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//ciclos/ciclo/@id
+</code></pre>
+
+<p>Salida real:</p>
+
+<pre><code class="xml">id=&quot;ASIR&quot;
+id=&quot;DAM&quot;
+id=&quot;SMR&quot;
+</code></pre>
+
+</details>
+
+<h3 id="actividad1.5">Actividad 1.5</h3>
+
+<p>Años en los que se publicaron los decretos de título de los Ciclos Formativos.</p>
+
+<details>
+Salida esperada:
+
+<pre><code class="xpath">año=&quot;2009&quot;
+año=&quot;2010&quot;
+año=&quot;2008&quot;
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//ciclos/ciclo/decretoTitulo/@año
+</code></pre>
+
+<p>Salida real:</p>
+
+<pre><code class="xml">año=&quot;2009&quot;
+año=&quot;2010&quot;
+año=&quot;2008&quot;
+</code></pre>
+
+</details>
+
+<h3 id="actividad1.6">Actividad 1.6</h3>
+
+<p>Ciclos Formativos de Grado Medio (se trata de obtener el elemento <code>&lt;ciclo&gt;</code> completo).</p>
+
+<details>
+Salida esperada:
+
+<blockquote>
+<p>Resuelva este ejercicio de dos formas distintas, en un único paso de búsqueda y en dos pasos de búsqueda.</p>
+</blockquote>
+
+<pre><code class="xml">&lt;ciclo id=&quot;SMR&quot;&gt;
+  &lt;nombre&gt;Sistemas Microinformáticos y Redes&lt;/nombre&gt;
+  &lt;grado&gt;Medio&lt;/grado&gt;
+  &lt;decretoTitulo año=&quot;2008&quot;/&gt;
+&lt;/ciclo&gt;
+</code></pre>
+
+<p>Consulta XPath en un paso:</p>
+
+<pre><code class="xpath">//ciclo[grado='Medio']
+</code></pre>
+
+<p>Consulta XPath en dos pasos:</p>
+
+<pre><code class="xpath">//grado[text()='Medio']/..
+</code></pre>
+
+<p>Salida real:</p>
+
+<pre><code class="xml">&lt;ciclo id=&quot;SMR&quot;&gt;
+      &lt;nombre&gt;Sistemas Microinformáticos y Redes&lt;/nombre&gt;
+      &lt;grado&gt;Medio&lt;/grado&gt;
+      &lt;decretoTitulo año=&quot;2008&quot;/&gt;
+    &lt;/ciclo&gt;
+</code></pre>
+
+</details>
+
+<h3 id="actividad1.7">Actividad 1.7</h3>
+
+<p>Nombre de los Ciclos Formativos de Grado Superior.</p>
+
+<details>
+Salida esperada:
+
+<blockquote>
+<p>Resuelva este ejercicio de dos formas distintas, en un único paso de búsqueda y en dos pasos de búsqueda.</p>
+</blockquote>
+
+<pre><code class="xml">&lt;nombre&gt;Desarrollo de Aplicaciones Multiplataforma&lt;/nombre&gt;
+&lt;nombre&gt;Administración de Sistemas Informáticos en Red&lt;/nombre&gt;
+</code></pre>
+
+<p>Consulta XPath en un paso:</p>
+
+<pre><code class="xpath">/ies/ciclos/ciclo[grado=&quot;Superior&quot;]/nombre
+</code></pre>
+
+<p>Consulta XPath en dos pasos:</p>
+
+<pre><code class="xpath">//grado[text()=&quot;Superior&quot;]/../nombre
+</code></pre>
+
+<p>Salida real:</p>
+
+<pre><code class="xml">&lt;nombre&gt;Administración de Sistemas Informáticos en Red&lt;/nombre&gt;
+&lt;nombre&gt;Desarrollo de Aplicaciones Multiplataforma&lt;/nombre&gt;
+</code></pre>
+
+</details>
+
+<h3 id="actividad1.8">Actividad 1.8</h3>
+
+<p>Nombre de los Ciclos Formativos anteriores a 2010.</p>
+
+<details>
+Salida esperada:
+
+<blockquote>
+<p>Resuelva este ejercicio de dos formas distintas, en un único paso de búsqueda y en dos pasos de búsqueda.</p>
+</blockquote>
+
+<pre><code class="plaintext">Administración de Sistemas Informáticos en Red
+Sistemas Microinformáticos y Redes
+</code></pre>
+
+<p>Consulta XPath en un paso:</p>
+
+<pre><code class="xpath">//ciclo[decretoTitulo/@año&lt;2010]/nombre/node()
+</code></pre>
+
+<p>Consulta XPath en dos pasos:</p>
+
+<pre><code class="xpath">/ies/ciclos/ciclo/decretoTitulo[@año&lt;2010]/../nombre/node()
+</code></pre>
+
+<p>Salida real:</p>
+
+<pre><code class="xml">Administración de Sistemas Informáticos en Red
+Sistemas Microinformáticos y Redes
+</code></pre>
+
+</details>
+
+<h3 id="actividad1.9">Actividad 1.9</h3>
+
+<p>Nombre de los Ciclos Formativos de 2008 o 2010.</p>
+
+<details>
+Salida esperada:
+
+<blockquote>
+<p>Resuelva este ejercicio de dos formas distintas, en un único paso de búsqueda y en dos pasos de búsqueda.</p>
+</blockquote>
+
+<pre><code class="plaintext">Desarrollo de Aplicaciones Multiplataforma
+Sistemas Microinformáticos y Redes
+</code></pre>
+
+<p>Consulta XPath en un paso:</p>
+
+<pre><code class="xpath">//ciclo[decretoTitulo/@año=2010 or decretoTitulo/@año=2008]/nombre/node()
+</code></pre>
+
+<p>Consulta XPath en dos pasos:</p>
+
+<pre><code class="xpath">//decretoTitulo[@año=2010 or @año=2008]/../nombre/node()
+</code></pre>
+
+<p>Salida real:</p>
+
+<pre><code class="xml">Desarrollo de Aplicaciones Multiplataforma
+Sistemas Microinformáticos y Redes
+</code></pre>
+
+</details>
+
+<h3 id="actividad1.9bis">Actividad 1.9 (BIS?)</h3>
+
+<p>Invéntate tu propia consulta.</p>
+
+<blockquote>
+<p>Obtener todos los nombres de los ciclos que contengan la palabra &#8220;informáticos&#8221;, no case-sensitive.</p>
+
+<blockquote>
+<p>Se trata de una consulta avanzada que puede no mostrarse en todos los visores. <a href="Recomendado">http://xpather.com </a></p>
+</blockquote>
+</blockquote>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="xml">&lt;nombre&gt;Administración de Sistemas Informáticos en Red&lt;/nombre&gt;
+&lt;nombre&gt;Sistemas Microinformáticos y Redes&lt;/nombre&gt;
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//nombre[contains(lower-case(text()), 'informáticos')]
+</code></pre>
+
+</details>
+
+</details>
+
+<h2 id="actividad2">Actividad 2</h2>
+
+<details>
+<summary>EXPANDIR ACTIVIDAD</summary>
+
+<p>Dado el siguiente documento XML, escriba las expresiones XPath que devuelvan la respuesta deseada.</p>
+
+<details>
+<summary>Documento XML</summary>
+
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ies&gt;
+  &lt;modulos&gt;
+    &lt;modulo id=&quot;0228&quot;&gt;
+      &lt;nombre&gt;Aplicaciones web&lt;/nombre&gt;
+      &lt;curso&gt;2&lt;/curso&gt;
+      &lt;horasSemanales&gt;4&lt;/horasSemanales&gt;
+      &lt;ciclo&gt;SMR&lt;/ciclo&gt;
+    &lt;/modulo&gt;
+    &lt;modulo id=&quot;0372&quot;&gt;
+      &lt;nombre&gt;Gestión de bases de datos&lt;/nombre&gt;
+      &lt;curso&gt;1&lt;/curso&gt;
+      &lt;horasSemanales&gt;5&lt;/horasSemanales&gt;
+      &lt;ciclo&gt;ASIR&lt;/ciclo&gt;
+    &lt;/modulo&gt;
+    &lt;modulo id=&quot;0373&quot;&gt;
+      &lt;nombre&gt;Lenguajes de marcas y sistemas de gestión de información&lt;/nombre&gt;
+      &lt;curso&gt;1&lt;/curso&gt;
+      &lt;horasSemanales&gt;3&lt;/horasSemanales&gt;
+      &lt;ciclo&gt;ASIR&lt;/ciclo&gt;
+      &lt;ciclo&gt;DAW&lt;/ciclo&gt;
+    &lt;/modulo&gt;
+    &lt;modulo id=&quot;0378&quot;&gt;
+      &lt;nombre&gt;Seguridad y Alta Disponibilidad&lt;/nombre&gt;
+      &lt;curso&gt;2&lt;/curso&gt;
+      &lt;horasSemanales&gt;2&lt;/horasSemanales&gt;
+      &lt;ciclo&gt;ASIR&lt;/ciclo&gt;
+    &lt;/modulo&gt;
+  &lt;/modulos&gt;
+&lt;/ies&gt;
+</code></pre>
+
+</details>
+
+<h3 id="actividad2.1">Actividad 2.1</h3>
+
+<p>Nombre de los módulos que se imparten en el Instituto.</p>
+
+<details>
+Salida esperada:
+
+<pre><code class="plaintext">Aplicaciones web
+Gestión de bases de datos
+Lenguajes de marcas y sistemas de gestión de información
+Seguridad y Alta Disponibilidad
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//modulo/nombre/node()
+</code></pre>
+
+<p>Salida real:</p>
+
+<pre><code class="xml">Aplicaciones web
+Gestión de bases de datos
+Lenguajes de marcas y sistemas de gestión de información
+Seguridad y Alta Disponibilidad
+</code></pre>
+
+</details>
+
+<h3 id="actividad2.2">Actividad 2.2</h3>
+
+<p>Nombre de los módulos del ciclo ASIR.</p>
+
+<details>
+Salida esperada:
+
+<pre><code class="plaintext">Gestión de bases de datos
+Lenguajes de marcas y sistemas de gestión de información
+Seguridad y Alta Disponibilidad
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//modulo[ciclo=&quot;ASIR&quot;]/nombre/node()
+</code></pre>
+
+<p>Salida real:</p>
+
+<pre><code class="xml">Gestión de bases de datos
+Lenguajes de marcas y sistemas de gestión de información
+Seguridad y Alta Disponibilidad
+</code></pre>
+
+</details>
+
+<h3 id="actividad2.3">Actividad 2.3</h3>
+
+<p>Nombre de los módulos que se imparten en el segundo curso de cualquier ciclo.</p>
+
+<details>
+Salida esperada:
+
+<pre><code class="plaintext">Aplicaciones web
+Seguridad y Alta Disponibilidad
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//modulo[curso=&quot;2&quot;]/nombre/node()
+</code></pre>
+
+<p>Salida real:</p>
+
+<pre><code class="xml">Aplicaciones web
+Seguridad y Alta Disponibilidad
+</code></pre>
+
+</details>
+
+<h3 id="actividad2.4">Actividad 2.4</h3>
+
+<p>Nombre de los módulos de menos de 5 horas semanales.</p>
+
+<details>
+Salida esperada:
+
+<pre><code class="plaintext">Aplicaciones web
+Lenguajes de marcas y sistemas de gestión de información
+Seguridad y Alta Disponibilidad
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//modulo[horasSemanales&lt;5]/nombre/node()
+</code></pre>
+
+<p>Salida real:</p>
+
+<pre><code class="xml">Aplicaciones web
+Lenguajes de marcas y sistemas de gestión de información
+Seguridad y Alta Disponibilidad
+</code></pre>
+
+</details>
+
+<h3 id="actividad2.5">Actividad 2.5</h3>
+
+<p>Nombre de los módulos que se imparten en el primer curso de ASIR.</p>
+
+<details>
+Salida esperada:
+
+<pre><code class="plaintext">Gestión de bases de datos
+Lenguajes de marcas y sistemas de gestión de información
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//modulo[ciclo=&quot;ASIR&quot; and curso=&quot;1&quot;]/nombre/node()
+</code></pre>
+
+<p>Salida real:</p>
+
+<pre><code class="xml">Gestión de bases de datos
+Lenguajes de marcas y sistemas de gestión de información
+</code></pre>
+
+</details>
+
+<h3 id="actividad2.6">Actividad 2.6</h3>
+
+<p>Horas semanales de los módulos de más de 3 horas semanales.</p>
+
+<details>
+Salida esperada:
+
+<pre><code class="plaintext">4
+5
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//modulo[horasSemanales&gt;3]/horasSemanales/node()
+</code></pre>
+
+<p>Salida real:</p>
+
+<pre><code class="xml">4
+5
+</code></pre>
+
+</details>
+
+<h3 id="actividad2.7">Actividad 2.7</h3>
+
+<p>Invéntate tu propia consulta.</p>
+
+<blockquote>
+<p>Nombre de los módulos con id mayor que 372.</p>
+</blockquote>
+
+<details>
+Salida esperada:
+
+<pre><code class="plaintext">Lenguajes de marcas y sistemas de gestión de información
+Seguridad y Alta Disponibilidad
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//modulo[@id&gt;372]/nombre/node()
+</code></pre>
+
+<p>Salida real:</p>
+
+<pre><code class="xml">Lenguajes de marcas y sistemas de gestión de información
+Seguridad y Alta Disponibilidad
+</code></pre>
+
+</details>
+</details>
+
+<h2 id="actividad3">Actividad 3</h2>
+
+<details>
+<summary>EXPANDIR ACTIVIDAD</summary>
+
+<p>Dado el siguiente documento XML, escriba las expresiones XPath que devuelvan la respuesta deseada.</p>
+
+<details>
+<summary>Documento XML</summary>
+
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ies&gt;
+  &lt;nombre&gt;Campus Digital&lt;/nombre&gt;
+  &lt;web&gt;https://campusdigitalfp.com/&lt;/web&gt;
+  &lt;ciclos&gt;
+    &lt;ciclo id=&quot;ASIR&quot;&gt;
+      &lt;nombre&gt;Administración de Sistemas Informáticos en Red&lt;/nombre&gt;
+      &lt;grado&gt;Superior&lt;/grado&gt;
+      &lt;decretoTitulo año=&quot;2009&quot; /&gt;
+    &lt;/ciclo&gt;
+    &lt;ciclo id=&quot;DAW&quot;&gt;
+      &lt;nombre&gt;Desarrollo de Aplicaciones Web&lt;/nombre&gt;
+      &lt;grado&gt;Superior&lt;/grado&gt;
+      &lt;decretoTitulo año=&quot;2010&quot; /&gt;
+    &lt;/ciclo&gt;
+    &lt;ciclo id=&quot;SMR&quot;&gt;
+      &lt;nombre&gt;Sistemas Microinformáticos y Redes&lt;/nombre&gt;
+      &lt;grado&gt;Medio&lt;/grado&gt;
+      &lt;decretoTitulo año=&quot;2008&quot; /&gt;
+    &lt;/ciclo&gt;
+  &lt;/ciclos&gt;
+  &lt;modulos&gt;
+    &lt;modulo id=&quot;0228&quot;&gt;
+      &lt;nombre&gt;Aplicaciones web&lt;/nombre&gt;
+      &lt;curso&gt;2&lt;/curso&gt;
+      &lt;horasSemanales&gt;4&lt;/horasSemanales&gt;
+      &lt;ciclo&gt;SMR&lt;/ciclo&gt;
+    &lt;/modulo&gt;
+    &lt;modulo id=&quot;0372&quot;&gt;
+      &lt;nombre&gt;Gestión de bases de datos&lt;/nombre&gt;
+      &lt;curso&gt;1&lt;/curso&gt;
+      &lt;horasSemanales&gt;5&lt;/horasSemanales&gt;
+      &lt;ciclo&gt;ASIR&lt;/ciclo&gt;
+    &lt;/modulo&gt;
+    &lt;modulo id=&quot;0373&quot;&gt;
+      &lt;nombre&gt;Lenguajes de marcas y sistemas de gestión de información&lt;/nombre&gt;
+      &lt;curso&gt;1&lt;/curso&gt;
+      &lt;horasSemanales&gt;3&lt;/horasSemanales&gt;
+      &lt;ciclo&gt;ASIR&lt;/ciclo&gt;
+      &lt;ciclo&gt;DAW&lt;/ciclo&gt;
+    &lt;/modulo&gt;
+    &lt;modulo id=&quot;0378&quot;&gt;
+      &lt;nombre&gt;Seguridad y Alta Disponibilidad&lt;/nombre&gt;
+      &lt;curso&gt;2&lt;/curso&gt;
+      &lt;horasSemanales&gt;2&lt;/horasSemanales&gt;
+      &lt;ciclo&gt;ASIR&lt;/ciclo&gt;
+    &lt;/modulo&gt;
+  &lt;/modulos&gt;
+&lt;/ies&gt;
+</code></pre>
+
+</details>
+
+<h3 id="actividad3.1">Actividad 3.1</h3>
+
+<p>Nombre de los módulos del ciclo &#8220;Sistemas Microinformáticos y Redes&#8221; (en la expresión final no deben aparecer las siglas SMR).</p>
+
+<details>
+Salida esperada:
+
+<pre><code class="plaintext">Aplicaciones web
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//modulo[not(ciclo=&quot;ASIR&quot; or ciclo=&quot;DAW&quot;)]/nombre/node()
+</code></pre>
+
+<p>Salida real:</p>
+
+<pre><code class="xml">Aplicaciones web
+</code></pre>
+
+</details>
+
+<h3 id="actividad3.2">Actividad 3.2</h3>
+
+<p>Nombre de los ciclos que incluyen el módulo &#8220;Lenguajes de marcas y sistemas de gestión de información&#8221;.</p>
+
+<details>
+Salida esperada:
+
+<pre><code class="plaintext">Administración de Sistemas Informáticos en Red
+Desarrollo de Aplicaciones Web
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//ciclo[@id=//modulo[nombre=&quot;Lenguajes de marcas y sistemas de gestión de información&quot;]/ciclo/node()]/nombre/node()
+</code></pre>
+
+<p>Salida real:</p>
+
+<pre><code class="xml">Administración de Sistemas Informáticos en Red
+Desarrollo de Aplicaciones Web
+</code></pre>
+
+</details>
+
+<h3 id="actividad3.3">Actividad 3.3</h3>
+
+<p>Nombre de los módulos de ciclos de Grado Superior.</p>
+
+<details>
+Salida esperada:
+
+<pre><code class="plaintext">Gestión de bases de datos
+Lenguajes de marcas y sistemas de gestión de información
+Seguridad y Alta Disponibilidad
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//modulo[ciclo=//ciclo[grado=&quot;Superior&quot;]/@id]/nombre/node()
+</code></pre>
+
+</details>
+
+<p>Salida real:</p>
+
+<pre><code class="xml">Gestión de bases de datos
+Lenguajes de marcas y sistemas de gestión de información
+Seguridad y Alta Disponibilidad
+</code></pre>
+
+<h3 id="actividad3.4">Actividad 3.4</h3>
+
+<p>Nombre de los módulos de ciclos cuyo título se aprobó en 2008.</p>
+
+<details>
+Salida esperada:
+
+<pre><code class="plaintext">Aplicaciones web
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//modulo[ciclo=//decretoTitulo[@año=&quot;2008&quot;]/../@id]/nombre/node()
+</code></pre>
+
+<p>Salida real:</p>
+
+<pre><code class="xml">Aplicaciones web
+</code></pre>
+
+</details>
+
+<h3 id="actividad3.5">Actividad 3.5</h3>
+
+<p>Grado de los ciclos con módulos de primer curso.</p>
+
+<details>
+Salida esperada:
+
+<pre><code class="plaintext">Superior
+Superior
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//ciclo[@id=//modulo[curso=&quot;1&quot;]/ciclo/node()]/grado/node()
+</code></pre>
+
+<p>Salida real:</p>
+
+<pre><code class="xml">Superior
+Superior
+</code></pre>
+
+</details>
+
+<h3 id="actividad3.6">Actividad 3.6</h3>
+
+<p>Invéntate tu propia consulta.</p>
+
+<blockquote>
+<p>Obtener el nombre del módulo con ID mayor de todos.</p>
+
+<blockquote>
+<p>Se trata de una consulta avanzada que puede no mostrarse en todos los visores. <a href="Recomendado">http://xpather.com </a></p>
+</blockquote>
+</blockquote>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">Seguridad y Alta Disponibilidad
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//modulo[number(@id) = max(//modulo/number(@id))]/nombre/node()
+</code></pre>
+
+<p>Salida real:</p>
+
+<pre><code class="xml">
+</code></pre>
+
+</details>
+</details>
+
+<h2 id="voluntariaactividad4">(Voluntaria) Actividad 4</h2>
+
+<details>
+<summary>EXPANDIR ACTIVIDAD</summary>
+
+<p>Dado el siguiente fichero XML:</p>
+
+<details>
+<summary>Documento XML</summary>
+
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;universidad&gt;
+
+    &lt;nombre&gt;Universidad de Zaragoza&lt;/nombre&gt;
+    &lt;pais&gt;España&lt;/pais&gt;
+
+    &lt;!-- GRADOS --&gt;
+
+    &lt;grados&gt;
+
+        &lt;grado id=&quot;g01&quot;&gt;
+            &lt;nombre&gt;Grado en Ingeniería Informática&lt;/nombre&gt;
+            &lt;plan&gt;2003&lt;/plan&gt;
+            &lt;creditos&gt;250&lt;/creditos&gt;
+            &lt;centro&gt;Escuela de Informática&lt;/centro&gt;
+        &lt;/grado&gt;
+
+        &lt;grado id=&quot;g02&quot;&gt;
+            &lt;nombre&gt;Grado en Administración y Dirección de Empresas&lt;/nombre&gt;
+            &lt;plan&gt;2000&lt;/plan&gt;
+            &lt;creditos&gt;275&lt;/creditos&gt;
+            &lt;centro&gt;Facultad de Ciencias Sociales&lt;/centro&gt;
+        &lt;/grado&gt;
+
+        &lt;grado id=&quot;g03&quot;&gt;
+            &lt;nombre&gt;Grado en Relaciones Laborales&lt;/nombre&gt;
+            &lt;plan&gt;2000&lt;/plan&gt;
+            &lt;creditos&gt;280&lt;/creditos&gt;
+            &lt;centro&gt;Facultad de Ciencias Sociales&lt;/centro&gt;
+            &lt;subdirector&gt;Alfonso Martín Luque&lt;/subdirector&gt;
+        &lt;/grado&gt;
+
+        &lt;grado id=&quot;g04&quot;&gt;
+            &lt;nombre&gt;Grado en Quimica&lt;/nombre&gt;
+            &lt;plan&gt;2003&lt;/plan&gt;
+            &lt;creditos&gt;175&lt;/creditos&gt;
+            &lt;centro&gt;Facultad de Ciencias Experimentales&lt;/centro&gt;
+        &lt;/grado&gt;
+
+        &lt;grado id=&quot;g05&quot;&gt;
+            &lt;nombre&gt;Grado en Biotecnología&lt;/nombre&gt;
+            &lt;plan&gt;2000&lt;/plan&gt;
+            &lt;creditos&gt;175&lt;/creditos&gt;
+            &lt;centro&gt;Facultad de Ciencias&lt;/centro&gt;
+        &lt;/grado&gt;
+
+        &lt;grado id=&quot;g06&quot;&gt;
+            &lt;nombre&gt;Grado en Humanidades&lt;/nombre&gt;
+            &lt;plan&gt;1980&lt;/plan&gt;
+            &lt;creditos&gt;475&lt;/creditos&gt;
+            &lt;centro&gt;Facultad de Humanidades&lt;/centro&gt;
+        &lt;/grado&gt;
+
+    &lt;/grados&gt;
+
+    &lt;!-- ASIGNATURAS --&gt;
+
+    &lt;asignaturas&gt;
+
+        &lt;asignatura id=&quot;a01&quot; titulacion=&quot;g01&quot;&gt;
+            &lt;nombre&gt;Ofimática&lt;/nombre&gt;
+            &lt;creditosTeoricos&gt;3&lt;/creditosTeoricos&gt;
+            &lt;creditosPracticos&gt;1.5&lt;/creditosPracticos&gt;
+            &lt;trimestre&gt;1&lt;/trimestre&gt;
+        &lt;/asignatura&gt;
+
+        &lt;asignatura id=&quot;a02&quot; titulacion=&quot;g01&quot;&gt;
+            &lt;nombre&gt;Ingeniería del Software&lt;/nombre&gt;
+            &lt;creditosTeoricos&gt;6&lt;/creditosTeoricos&gt;
+            &lt;creditosPracticos&gt;1.5&lt;/creditosPracticos&gt;
+            &lt;trimestre&gt;2&lt;/trimestre&gt;
+        &lt;/asignatura&gt;
+
+        &lt;asignatura id=&quot;a03&quot; titulacion=&quot;g02&quot;&gt;
+            &lt;nombre&gt;Administración de Empresas&lt;/nombre&gt;
+            &lt;creditosTeoricos&gt;4&lt;/creditosTeoricos&gt;
+            &lt;creditosPracticos&gt;1.5&lt;/creditosPracticos&gt;
+            &lt;trimestre&gt;1&lt;/trimestre&gt;
+        &lt;/asignatura&gt;
+
+        &lt;asignatura id=&quot;a04&quot; titulacion=&quot;g02&quot;&gt;
+            &lt;nombre&gt;Derecho Internacional&lt;/nombre&gt;
+            &lt;creditosTeoricos&gt;4&lt;/creditosTeoricos&gt;
+            &lt;creditosPracticos&gt;5&lt;/creditosPracticos&gt;
+            &lt;trimestre&gt;1&lt;/trimestre&gt;
+        &lt;/asignatura&gt;
+
+        &lt;asignatura id=&quot;a05&quot; titulacion=&quot;g04&quot;&gt;
+            &lt;nombre&gt;Pedagogía&lt;/nombre&gt;
+            &lt;creditosTeoricos&gt;4&lt;/creditosTeoricos&gt;
+            &lt;creditosPracticos&gt;1.5&lt;/creditosPracticos&gt;
+            &lt;trimestre&gt;2&lt;/trimestre&gt;
+        &lt;/asignatura&gt;
+
+        &lt;asignatura id=&quot;a06&quot; titulacion=&quot;g03&quot;&gt;
+            &lt;nombre&gt;Didáctica&lt;/nombre&gt;
+            &lt;creditosTeoricos&gt;4&lt;/creditosTeoricos&gt;
+            &lt;creditosPracticos&gt;3&lt;/creditosPracticos&gt;
+            &lt;trimestre&gt;2&lt;/trimestre&gt;
+        &lt;/asignatura&gt;
+
+        &lt;asignatura id=&quot;a07&quot; titulacion=&quot;g04&quot;&gt;
+            &lt;nombre&gt;Tecnología de los Alimentos&lt;/nombre&gt;
+            &lt;creditosTeoricos&gt;1.5&lt;/creditosTeoricos&gt;
+            &lt;creditosPracticos&gt;7.5&lt;/creditosPracticos&gt;
+            &lt;trimestre&gt;2&lt;/trimestre&gt;
+        &lt;/asignatura&gt;
+
+        &lt;asignatura id=&quot;a08&quot; titulacion=&quot;g01&quot;&gt;
+            &lt;nombre&gt;Bases de Datos&lt;/nombre&gt;
+            &lt;creditosTeoricos&gt;4.5&lt;/creditosTeoricos&gt;
+            &lt;creditosPracticos&gt;5.5&lt;/creditosPracticos&gt;
+            &lt;trimestre&gt;1&lt;/trimestre&gt;
+        &lt;/asignatura&gt;
+
+        &lt;asignatura id=&quot;a09&quot; titulacion=&quot;g06&quot;&gt;
+            &lt;nombre&gt;Historia del Pensamiento&lt;/nombre&gt;
+            &lt;creditosTeoricos&gt;6&lt;/creditosTeoricos&gt;
+            &lt;creditosPracticos&gt;0&lt;/creditosPracticos&gt;
+            &lt;trimestre&gt;2&lt;/trimestre&gt;
+        &lt;/asignatura&gt;
+
+    &lt;/asignaturas&gt;
+
+    &lt;!-- ALUMNOS --&gt;
+
+    &lt;alumnos&gt;
+
+        &lt;alumno id=&quot;e01&quot;&gt;
+            &lt;apellido1&gt;Rivas&lt;/apellido1&gt;
+            &lt;apellido2&gt;Santos&lt;/apellido2&gt;
+            &lt;nombre&gt;Víctor Manuel&lt;/nombre&gt;
+            &lt;sexo&gt;Hombre&lt;/sexo&gt;
+            &lt;estudios&gt;
+                &lt;grado codigo=&quot;g01&quot; /&gt;
+                &lt;asignaturas&gt;
+                    &lt;asignatura codigo=&quot;a01&quot; /&gt;
+                    &lt;asignatura codigo=&quot;a03&quot; /&gt;
+                    &lt;asignatura codigo=&quot;a05&quot; /&gt;
+                    &lt;asignatura codigo=&quot;a09&quot; /&gt;
+                &lt;/asignaturas&gt;
+            &lt;/estudios&gt;
+        &lt;/alumno&gt;
+
+        &lt;alumno id=&quot;e02&quot;&gt;
+            &lt;apellido1&gt;Pérez&lt;/apellido1&gt;
+            &lt;apellido2&gt;García&lt;/apellido2&gt;
+            &lt;nombre&gt;Luisa&lt;/nombre&gt;
+            &lt;sexo&gt;Mujer&lt;/sexo&gt;
+            &lt;estudios&gt;
+                &lt;grado codigo=&quot;g02&quot; /&gt;
+                &lt;asignaturas&gt;
+                    &lt;asignatura codigo=&quot;a02&quot; /&gt;
+                    &lt;asignatura codigo=&quot;a01&quot; /&gt;
+                &lt;/asignaturas&gt;
+                &lt;proyecto&gt;Web de IBM.com&lt;/proyecto&gt;
+            &lt;/estudios&gt;
+
+        &lt;/alumno&gt;
+
+        &lt;alumno id=&quot;e03&quot; beca=&quot;si&quot;&gt;
+            &lt;apellido1&gt;Pérez&lt;/apellido1&gt;
+            &lt;apellido2&gt;Romero&lt;/apellido2&gt;
+            &lt;nombre&gt;Fernando&lt;/nombre&gt;
+            &lt;sexo&gt;Hombre&lt;/sexo&gt;
+            &lt;estudios&gt;
+                &lt;grado codigo=&quot;g02&quot; /&gt;
+                &lt;asignaturas&gt;
+                    &lt;asignatura codigo=&quot;a02&quot; /&gt;
+                    &lt;asignatura codigo=&quot;a01&quot; /&gt;
+                    &lt;asignatura codigo=&quot;a04&quot; /&gt;
+                    &lt;asignatura codigo=&quot;a09&quot; /&gt;
+                &lt;/asignaturas&gt;
+            &lt;/estudios&gt;
+        &lt;/alumno&gt;
+
+        &lt;alumno id=&quot;e04&quot;&gt;
+            &lt;apellido1&gt;Avalón&lt;/apellido1&gt;
+            &lt;apellido2&gt;Jiménez&lt;/apellido2&gt;
+            &lt;nombre&gt;María&lt;/nombre&gt;
+            &lt;sexo&gt;Mujer&lt;/sexo&gt;
+            &lt;estudios&gt;
+                &lt;grado codigo=&quot;g01&quot; /&gt;
+                &lt;asignaturas&gt;
+                    &lt;asignatura codigo=&quot;a02&quot; /&gt;
+                    &lt;asignatura codigo=&quot;a01&quot; /&gt;
+                    &lt;asignatura codigo=&quot;a07&quot; /&gt;
+                &lt;/asignaturas&gt;
+                &lt;proyecto&gt;Estudio de Salinidad del Pantano Iris&lt;/proyecto&gt;
+            &lt;/estudios&gt;
+        &lt;/alumno&gt;
+
+    &lt;/alumnos&gt;
+
+&lt;/universidad&gt;
+</code></pre>
+
+</details>
+
+<p>Obtén la siguiente información.</p>
+
+<h3 id="actividad4.01">Actividad 4.01</h3>
+
+<p>Nombre de la Universidad.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">Universidad de Zaragoza
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">/universidad/nombre/node()
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.02">Actividad 4.02</h3>
+
+<p>País de la Universidad.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">España
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">/universidad/pais/node()
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.03">Actividad 4.03</h3>
+
+<p>Nombres de los grados.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">Grado en Ingeniería Informática
+Grado en Administración y Dirección de Empresas
+Grado en Relaciones Laborales
+Grado en Quimica
+Grado en Biotecnología
+Grado en Humanidades
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//grado/nombre/node()
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.04">Actividad 4.04</h3>
+
+<p>Años de plan de estudio de los grados.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">2003
+2000
+2000
+2003
+2000
+1980
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//grados/grado/plan/text()
+</code></pre>
+
+<p>Consulta XPath <a href="https://www.freeformatter.com/xpath-tester.html">v2.0</a> eliminando duplicados.</p>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">2003
+2000
+1980
+</code></pre>
+
+<pre><code class="xpath">distinct-values(//grados/grado/plan/text())
+</code></pre>
+
+<p>Consulta XPath <a href="https://www.freeformatter.com/xpath-tester.html">v2.0</a> iterando por grupos y concatenando contenido de dos etiquetas.</p>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">2003 | Grado en Ingeniería Informática 
+2000 | Grado en Administración y Dirección de Empresas 
+2000 | Grado en Relaciones Laborales 
+2003 | Grado en Quimica 
+2000 | Grado en Biotecnología 
+1980 | Grado en Humanidades
+</code></pre>
+
+<pre><code class="xpath">for $g in //grados/grado return concat($g/plan/text(), ' | ', $g/nombre/text())
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.05">Actividad 4.05</h3>
+
+<p>Nombres de todos los alumnos.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">Víctor Manuel
+Luisa
+Fernando
+María
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//alumno/nombre/text()
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.06">Actividad 4.06</h3>
+
+<p>Identificadores de todos los grados.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">g01
+g02
+g03
+g04
+g05
+g06
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//grado/@id
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.07">Actividad 4.07</h3>
+
+<p>Datos del grado cuyo id es g01.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">&lt;nombre&gt;Grado en Ingeniería Informática&lt;/nombre&gt;
+&lt;plan&gt;2003&lt;/plan&gt;
+&lt;creditos&gt;250&lt;/creditos&gt;
+&lt;centro&gt;Escuela de Informática&lt;/centro&gt;
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//grado[@id=&quot;g01&quot;]/* 
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.08">Actividad 4.08</h3>
+
+<p>Centro en que se estudia el grado cuyo id es g02.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">Facultad de Ciencias Sociales
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//grado[@id=&quot;g02&quot;]/centro/text()
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.09">Actividad 4.09</h3>
+
+<p>Nombre de las grados que tengan subdirector.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">Grado en Relaciones Laborales
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//grado[subdirector]/nombre/text()
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.10">Actividad 4.10</h3>
+
+<p>Nombre de los alumnos que estén haciendo proyecto.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">Luisa
+María
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//alumno[estudios/proyecto]/nombre/text()
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.11">Actividad 4.11</h3>
+
+<p>Códigos de los grados en los que hay algún alumno matriculado.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">g01
+g02
+g02
+g01
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//alumno/estudios/grado/@codigo
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.12">Actividad 4.12</h3>
+
+<p>Apellidos y Nombre de los alumnos con beca.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">Pérez Romero, Fernando
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//alumno[@beca=&quot;si&quot;]/concat(apellido1, &quot; &quot; ,apellido2, &quot;, &quot; ,nombre)
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.13">Actividad 4.13</h3>
+
+<p>Nombre de las asignaturas del grado g04.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">Pedagogía
+Tecnología de los Alimentos
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//asignaturas/asignatura[@titulacion=&quot;g04&quot;]/nombre/text()
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.14">Actividad 4.14</h3>
+
+<p>Nombre de las asignaturas de segundo trimestre.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">Ingeniería del Software
+Pedagogía
+Didáctica
+Tecnología de los Alimentos
+Historia del Pensamiento
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//asignaturas/asignatura[trimestre=&quot;2&quot;]/nombre/text()
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.15">Actividad 4.15</h3>
+
+<p>Nombre de las asignaturas que no tienen 4 créditos teóricos.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">Ofimática
+Ingeniería del Software
+Tecnología de los Alimentos
+Bases de Datos
+Historia del Pensamiento
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//asignaturas/asignatura[creditosTeoricos!=&quot;4&quot;]/nombre/text()
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.16">Actividad 4.16</h3>
+
+<p>Código del grado que estudia el último alumno.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">g01
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//alumnos/alumno[last()]/estudios/grado/@codigo
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.17">Actividad 4.17</h3>
+
+<p>Código de las asignaturas que estudian mujeres.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">a02
+a01
+a02
+a01
+a07
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//alumnos/alumno[sexo=&quot;Mujer&quot;]//asignatura/@codigo
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.18">Actividad 4.18</h3>
+
+<p>Nombre de los alumnos matriculados en la asignatura a02.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">Víctor Manuel
+Luisa
+Fernando
+María
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//alumno[//asignatura/@codigo=&quot;a02&quot;]/nombre/text()
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.19">Actividad 4.19</h3>
+
+<p>Códigos de los grados que estudian los alumnos matriculados en alguna asignatura.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">g01
+g02
+g02
+g01
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//alumno[//asignatura]//grado/@codigo
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.20">Actividad 4.20</h3>
+
+<p>Apellidos de todos los hombres.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">Rivas Santos
+Pérez Romero
+</code></pre>
+
+<p>Consulta XPath <a href="https://www.freeformatter.com/xpath-tester.html">v2.0</a> iterando por grupos y concatenando contenido de dos etiquetas.</p>
+
+<pre><code class="xpath">for $g in //alumnos/alumno[sexo=&quot;Hombre&quot;] return concat($g/apellido1, &quot; &quot;, $g/apellido2)
+</code></pre>
+
+<blockquote>
+<p>La solución para consultas XPath v1.0 devuelve los apellidos por separado, se podrían procesar posteriormente, pero no es lo ideal.</p>
+
+<blockquote>
+<pre><code class="xpath">//alumno[sexo='Hombre']/apellido1/text() | //alumno[sexo='Hombre']/apellido2/text()
+</code></pre>
+</blockquote>
+</blockquote>
+
+</details>
+
+<h3 id="actividad4.21">Actividad 4.21</h3>
+
+<p>Nombre de la grado que estudia Víctor Manuel.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">Grado en Ingeniería Informática
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//grados/grado[@id=//alumno[nombre=&quot;Víctor Manuel&quot;]//grado/@codigo]/nombre/text()
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.22">Actividad 4.22</h3>
+
+<p>Nombre de las asignaturas que estudia Luisa.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">Ofimática
+Ingeniería del Software
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//asignaturas/asignatura[@id=//alumno[nombre=&quot;Luisa&quot;]//asignatura/@codigo]/nombre/text()
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.23">Actividad 4.23</h3>
+
+<p>Primer apellido de los alumnos matriculados en Ingeniería del Software.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">Pérez
+Pérez
+Avalón
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//alumno[descendant::*/@codigo=//asignaturas/asignatura[nombre=&quot;Ingeniería del Software&quot;]/@id]/apellido1/text()
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.24">Actividad 4.24</h3>
+
+<p>Nombre de los grados que estudian los alumnos matriculados en la asignatura Tecnología de los Alimentos.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">Grado en Ingeniería Informática
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//grado[@id=//alumno[.//@codigo=//asignatura[nombre=&quot;Tecnología de los Alimentos&quot;]/@id]//grado/@codigo]/nombre/text()
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.25">Actividad 4.25</h3>
+
+<p>Nombre de los alumnos matriculados en grados que no tienen subdirector.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">Víctor Manuel
+Luisa
+Fernando
+María
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//alumno[.//grado/@codigo=//grado[not(subdirector)]/@id]/nombre/text()
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.26">Actividad 4.26</h3>
+
+<p>Nombre de los alumnos matriculados en asignaturas con 0 créditos prácticos y que estudien el grado de Ingeniería Informática .</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">Víctor Manuel
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//alumno[.//@codigo=//asignatura[creditosPracticos=&quot;0&quot;]/@id and .//@codigo=//grado[nombre=&quot;Grado en Ingeniería Informática&quot;]/@id]/nombre/text()
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.27">Actividad 4.27</h3>
+
+<p>Nombre de los alumnos que estudian grados cuyos planes son anteriores a 2002.</p>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">Luisa
+Fernando
+</code></pre>
+
+<p>Consulta XPath:</p>
+
+<pre><code class="xpath">//alumno[.//grado/@codigo=//grado[plan&lt;2002]/@id]/nombre/text()
+</code></pre>
+
+</details>
+
+<h3 id="actividad4.28">Actividad 4.28</h3>
+
+<p>Invéntate tu propia consulta.</p>
+
+<blockquote>
+<p>Obtener un listado con el nombre de los alumnos y la suma de los creditos teoricos de todas las asignaturas en que estan matriculados.</p>
+</blockquote>
+
+<details>
+
+<p>Salida esperada:</p>
+
+<pre><code class="plaintext">Víctor Manuel: 17 
+Luisa: 9 
+Fernando: 19 
+María: 10.5
+</code></pre>
+
+<p>Consulta XPath <a href="https://www.freeformatter.com/xpath-tester.html">v2.0</a> iterando por alumnos, sumando los creditos de las asignaturas y concatenandolos con el nombre del alumno.</p>
+
+<pre><code class="xpath">for $a in //alumno return concat($a/nombre, &quot;: &quot;, sum(//asignatura[@id = $a//asignatura/@codigo]/creditosTeoricos))
+</code></pre>
+
+</details>
+</details>
+
+</body>
+</html>
